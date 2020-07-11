@@ -2,7 +2,7 @@
 
 const int PWM_FRQ = 585937;
 const int PWM_RES = 256;
-const float sin_frq = 60;
+const int sin_frq = 1000;
 void setup() {
   analogWriteFrequency(2,PWM_FRQ);
   analogWriteFrequency(3,PWM_FRQ);
@@ -10,7 +10,8 @@ void setup() {
 }
 
 void loop() {
-
-  analogWrite(2, PWM_RES/2);
-  analogWrite(3, PWM_RES/2);
+  float t = 2.0*PI*((micros() % (1000000/sin_frq))/(1000000.0/sin_frq));
+  int out = (PWM_RES/2) + sin(t) * (PWM_RES/2);
+  analogWrite(2, out);
+  analogWrite(3, out);
 }
