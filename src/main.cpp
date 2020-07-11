@@ -2,7 +2,8 @@
 
 const int PWM_FRQ = 585937;
 const int PWM_RES = 256;
-const int sin_frq = 1000;
+int sin_frq = 10000;
+
 void setup() {
   analogWriteFrequency(2,PWM_FRQ);
   analogWriteFrequency(3,PWM_FRQ);
